@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE CSE Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f6fa;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            animation: fadeInDown 1s;
+        }
+
+        .page-info {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 800px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            animation: fadeIn 2s;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            margin-right: 80%;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            margin-bottom: 50px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .section h2 {
+            color: #3498db;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+            animation: fadeIn 1.5s;
+        }
+
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .box {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 1s;
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: #f1f1f1;
+        }
+
+        .box h3 {
+            color: #2c3e50;
+            font-size: 1.25rem;
+            margin-top: 15px;
+            animation: fadeIn 2s;
+        }
+
+        .box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            animation: fadeIn 2s;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: none;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .box-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .box {
+                height: 350px;
+            }
+
+            .box img {
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .box-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .box {
+                height: 300px;
+            }
+
+            .box img {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="resource.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Resources</a>
+    <h1>GATE CSE Resources</h1>
+    <div class="page-info">
+        Welcome to the GATE CSE Resources page! Here, you can access study materials, question papers, and notes for various GATE CSE subjects. 
+        Click on the subject you're interested in to explore resources and start your preparation. Best of luck!
+    </div>
+    <div class="section">
+        <h2>Core Subjects</h2>
+        <div class="box-container">
+            <div class="box" onclick="window.location.href='https://drive.google.com/drive/folders/1GY9wEg4O66Hryx9l9FRXoXCCheu8dXKA';">
+                <img src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/228525503/original/d36bf60df6d0a08835caec728f75af83693152fb/help-you-in-digital-logic-design-dld.jpg">
+                <h3>Digital Logic</h3>
+            </div>
+            <div class="box" onclick="window.location.href='https://drive.google.com/drive/folders/1GY9wEg4O66Hryx9l9FRXoXCCheu8dXKA';">
+                <img src="https://i0.wp.com/jobdekhoguru.com/wp-content/uploads/2023/03/New-Project-2-3.jpg?fit=1200%2C630&ssl=1" alt="Computer Organization">
+                <h3>Computer Organization</h3>
+            </div>
+            <div class="box" onclick="window.location.href='https://drive.google.com/drive/folders/1GY9wEg4O66Hryx9l9FRXoXCCheu8dXKA';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPQn98RqehxJfCv9iIJo3Nwq9k5G_kYjuISw&s">
+                <h3>Algorithms</h3>
+            </div>
+            <div class="box" onclick="window.location.href='data_structures.html';">
+                <img src="https://www.thinknexttraining.com/images/data-structues-and-algorithms-mob.jpg">
+                <h3>Data Structures</h3>
+            </div>
+            <div class="box" onclick="window.location.href='https://drive.google.com/drive/folders/1GY9wEg4O66Hryx9l9FRXoXCCheu8dXKA'">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbeQpSEuDlRajLVB6CGtlEBZmf8BEZ5wz1yg&s" alt="Operating Systems">
+                <h3>Operating Systems</h3>
+            </div>
+            <div class="box" onclick="window.location.href='https://drive.google.com/drive/folders/1t4ejLwnU1wwJ5vrCKLCUTmo5t4lNqmbV';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4aZ_MK-2R_PeK75PAuer-Pq9vqdA-jmN1SA&s">
+                <h3>Theory of Computation</h3>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <h2>Additional Subjects</h2>
+        <div class="box-container">
+            <div class="box" onclick="window.location.href='databases.html';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCgnytnrgqmZ-XTodr0WvFhv-sXxReQHpT-g&s">
+                <h3>Databases</h3>
+            </div>
+            <div class="box" onclick="window.location.href='networks.html';">
+                <img src="https://bcalabs.org/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F4hlaqclp%2Fproduction%2Fbd843511e8f7e2475b57c908a5b68e763e5f9de1-626x626.jpg&w=3840&q=75">
+                <h3>Computer Networks</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top animate__animated animate__fadeIn"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // Show or hide the back-to-top button based on scroll position
+        window.onscroll = function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>

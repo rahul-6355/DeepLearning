@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Syllabus Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url('oneshot.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .lecture-details {
+            /* background-color: rgba(255, 255, 255, 0.9); */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: -20px;
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+            width: 100%;
+            max-width: 800px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lecture-details h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .lecture-details p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+
+        .icon {
+            cursor: pointer;
+            font-size: 24px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .icon:hover {
+            color: #3498db;
+            transform: scale(1.2);
+        }
+
+        .fa-youtube {
+            color: red;
+        }
+
+        .status-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .status-checkbox:checked {
+            accent-color: lightgreen;
+        }
+
+        .status-checkbox:hover {
+            transform: scale(1.2);
+        }
+
+        .placeholder-message {
+            font-size: 24px;
+            color: #070707;
+            opacity: 0.9;
+            text-align: center;
+            margin-top: 50px;
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            select {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .lecture-details, table {
+                width: 100%;
+            }
+
+            .thumbnail {
+                width: 80px;
+            }
+
+            .icon {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lecture-details h3 {
+                font-size: 20px;
+            }
+
+            .lecture-details p {
+                font-size: 14px;
+            }
+
+            .placeholder-message {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lecture-details" id="lectureDetails">
+        <!-- Lecture details will be dynamically updated here -->
+        <div class="placeholder-message" id="placeholderMessage">
+            Please Select your Year and Subject
+        </div>
+    </div>
+    
+<div class="header">
+    <select id="yearDropdown" onchange="updateSubjects()">
+        <option value="">Select Year</option>
+        <option value="1">Year 1</option>
+        <option value="2">Year 2</option>
+        <option value="3">Year 3</option>
+        <option value="4">Year 4</option>
+    </select>
+    <select id="subjectDropdown" onchange="updateLectures()">
+        <option value="">Select Subject</option>
+    </select>
+</div>
+
+
+
+<table id="lecturesTable" style="display: none;">
+    <thead>
+        <tr>
+            <th>Lecture</th>
+            <th>Video Link</th>
+            <th>Notes</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Rows will be dynamically added here -->
+    </tbody>
+</table>
+
+<!-- Placeholder message -->
+
+
+<script>
+    const subjectsByYear = {
+        "1": ["Mathematics I", "Physics", "Chemistry", "Basic Electrical Engineering"],
+        "2": ["Mathematics II", "Data Structures", "Digital Electronics", "Mechanics"],
+        "3": ["Operating Systems", "Database Management", "Computer Networks", "Software Engineering"],
+        "4": ["Artificial Intelligence", "Machine Learning", "Cloud Computing", "Project Management"]
+    };
+
+    const lecturesBySubject = {
+        "Mathematics I": [
+            { thumbnail: "Screenshot 2025-02-19 202141.png", video: "https://www.youtube.com/watch?v=DVaKTgXAzow", notes: "notes-link1.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 202158.png", video: "https://www.youtube.com/watch?v=wLUV1G9g1XQ", notes: "notes-link2.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 202226.png", video: "https://www.youtube.com/watch?v=v6ImBEiL7zE", notes: "notes-link3.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 202244.png", video: "https://www.youtube.com/watch?v=3v8bU85ojSE", notes: "notes-link4.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 202312.png", video: "https://www.youtube.com/watch?v=fmYjaf1ZT_8", notes: "notes-link5.pdf" }
+        ],
+        "Physics": [
+            { thumbnail: "Screenshot 2025-02-19 201405.png", video: "https://www.youtube.com/watch?v=iGKu2fOPiwk", notes: "physics-notes1.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 201443.png", video: "https://www.youtube.com/watch?v=Q3zPizXzGws", notes: "physics-notes2.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 201702.png", video: "https://www.youtube.com/watch?v=P77OkWn7cuQ", notes: "physics-notes3.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 201716.png", video: "https://www.youtube.com/watch?v=DkzyhhzSIzw", notes: "physics-notes4.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 201750.png", video: "https://www.youtube.com/watch?v=Po75NyRLq4c", notes: "physics-notes5.pdf" }
+        ],
+        "Chemistry": [
+            { thumbnail: "Screenshot 2025-02-19 200809.png", video: "https://www.youtube.com/watch?v=E1MikgBHcZU&list=PL-vEH_IPWrhBI2paB57eyXuWXYsapHTxg", notes: "chemistry-notes1.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 200829.png", video: "https://www.youtube.com/watch?v=6P_rF3bPftk&list=PL-vEH_IPWrhBI2paB57eyXuWXYsapHTxg&index=2", notes: "chemistry-notes2.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 200846.png", video: "https://www.youtube.com/watch?v=DLnQ1E6_2kw&list=PL-vEH_IPWrhBI2paB57eyXuWXYsapHTxg&index=3", notes: "chemistry-notes3.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 200900.png", video: "https://www.youtube.com/watch?v=sybAgfanYzo&list=PL-vEH_IPWrhBI2paB57eyXuWXYsapHTxg&index=4", notes: "chemistry-notes4.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 200912.png", video: "https://www.youtube.com/watch?v=79irlozeOlU&list=PL-vEH_IPWrhBI2paB57eyXuWXYsapHTxg&index=6", notes: "chemistry-notes5.pdf" }
+        ],
+        "Basic Electrical Engineering": [
+            { thumbnail: "Screenshot 2025-02-19 195314.png", video: "https://www.youtube.com/watch?v=ltp52bdJQ3w&list=PL-vEH_IPWrhAda9e2l6QtfYQASGFA5yPS", notes: "electrical-notes1.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 195340.png", video: "https://www.youtube.com/watch?v=HjhaedTyyQ4&list=PL-vEH_IPWrhAda9e2l6QtfYQASGFA5yPS&index=2", notes: "electrical-notes2.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 195402.png", video: "https://www.youtube.com/watch?v=W2BY_zEMjjU&list=PL-vEH_IPWrhAda9e2l6QtfYQASGFA5yPS&index=3", notes: "electrical-notes3.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 195454.png", video: "https://www.youtube.com/watch?v=nbJzkqHa67w&list=PL-vEH_IPWrhAda9e2l6QtfYQASGFA5yPS&index=4", notes: "electrical-notes4.pdf" },
+            { thumbnail: "Screenshot 2025-02-19 195516.png", video: "https://www.youtube.com/watch?v=5R0TsUH5YeY&list=PL-vEH_IPWrhAda9e2l6QtfYQASGFA5yPS&index=5", notes: "electrical-notes5.pdf" }
+        ]
+    };
+
+    function updateSubjects() {
+        const yearDropdown = document.getElementById("yearDropdown");
+        const subjectDropdown = document.getElementById("subjectDropdown");
+        const selectedYear = yearDropdown.value;
+
+        // Clear existing subjects
+        subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+
+        if (selectedYear) {
+            // Add subjects based on selected year
+            subjectsByYear[selectedYear].forEach(subject => {
+                const option = document.createElement("option");
+                option.value = subject;
+                option.textContent = subject;
+                subjectDropdown.appendChild(option);
+            });
+        }
+
+        // Show/hide placeholder message
+        updatePlaceholderMessage();
+    }
+
+    function updateLectures() {
+        const subjectDropdown = document.getElementById("subjectDropdown");
+        const selectedSubject = subjectDropdown.value;
+        const lectureDetails = document.getElementById("lectureDetails");
+        const lecturesTable = document.getElementById("lecturesTable");
+        const tbody = lecturesTable.querySelector("tbody");
+
+        // Clear existing content
+        lectureDetails.innerHTML = "";
+        tbody.innerHTML = "";
+        lecturesTable.style.display = "none";
+
+        if (selectedSubject) {
+            // Update lecture detail
+            // Add lectures to the table
+            if (lecturesBySubject[selectedSubject]) {
+                lecturesBySubject[selectedSubject].forEach((lecture, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td><img src="${lecture.thumbnail}" alt="Unit ${index + 1}" class="thumbnail"> Unit ${index + 1}</td>
+                        <td><i class="fa-brands fa-youtube icon" onclick="window.open('${lecture.video}', '_blank');"></i></td>
+                        <td><i class="fas fa-file-alt icon" onclick="window.open('${lecture.notes}', '_blank');"></i></td>
+                        <td><input type="checkbox" class="status-checkbox"></td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                lecturesTable.style.display = "table";
+            }
+        }
+
+        // Show/hide placeholder message
+        updatePlaceholderMessage();
+    }
+
+    function updatePlaceholderMessage() {
+        const placeholderMessage = document.getElementById("placeholderMessage");
+        const yearDropdown = document.getElementById("yearDropdown");
+        const subjectDropdown = document.getElementById("subjectDropdown");
+
+        if (!yearDropdown.value || !subjectDropdown.value) {
+            placeholderMessage.style.display = "block";
+        } else {
+            placeholderMessage.style.display = "none";
+        }
+    }
+
+    // Initial check for placeholder message
+    updatePlaceholderMessage();
+</script>
+
+</body>
+</html>

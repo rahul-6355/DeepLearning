@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f6fa;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page-info {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 800px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            margin-right: 80%;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .back-button:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        .section {
+            margin-bottom: 50px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .section h2 {
+            color: #3498db;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .box {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: #f1f1f1;
+        }
+
+        .box h3 {
+            color: #2c3e50;
+            font-size: 1.25rem;
+            margin-top: 15px;
+        }
+
+        .box img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .box:hover img {
+            transform: scale(1.05);
+        }
+
+        .download-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-button:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .page-info {
+                font-size: 1rem;
+                padding: 15px;
+            }
+
+            .back-button {
+                margin-right: 70%;
+            }
+
+            .box-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .box {
+                height: 380px;
+            }
+
+            .box img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-info {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+
+            .back-button {
+                margin-right: 60%;
+            }
+
+            .box-container {
+                grid-template-columns: 1fr;
+            }
+
+            .box {
+                height: 350px;
+            }
+
+            .box img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="resource.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Resources</a>
+    <h1>College Notes</h1>
+    <div class="page-info">
+        Welcome to the College Notes page! Here, you can find and download notes for various subjects from your college curriculum. 
+        The notes are organized by year and subject for easy access. Simply click on the subject you're interested in and download 
+        the notes to help you with your studies. Happy learning!
+    </div>
+    <div class="section">
+        <h2>1st Year</h2>
+        <div class="box-container">
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwEiHKDh7rKKHyB-QfsE9gxfiiilsb8AllFQ&s">
+                <h3>Electrical</h3>
+                <a href="https://drive.google.com/drive/folders/1S2kg5NoReNWeLiRYHgD__KW1Bupz85Go" class="download-button">Download</a>
+            </div>
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRB_huukHUak_chDSvtps9d2KGlF-NdmAHpg&s" alt="Physics">
+                <h3>Physics</h3>
+                <a href="https://drive.google.com/drive/folders/1hENL5Ig7PoE2Tt4XmAo5CXB3kE_k5rqG" class="download-button">Download</a>
+            </div>
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4_ETMnLdH_8djatg2ZhbHr0YmSFtnSqhkZw&s">
+                <h3>Environment</h3>
+                <a href="https://drive.google.com/drive/folders/1711lsPKSkHeicmR05hBkt5vKcJ4F7lMQ" class="download-button">Download</a>
+            </div>
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb1AFxGgtvyEvf1kLFeAhqvqv2JBNjvTEzQ&s">
+                <h3>Electronics</h3>
+                <a href="https://drive.google.com/file/d/1Lk7TItpDGDIhzCB6nd3f5PpqMGx6hdPD/view" class="download-button">Download</a>
+            </div>
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt-zJ_z7AU95EjMQiQfVBLfjh9ZEqAPgqciA&s" alt="Mechanics">
+                <h3>Mechanics</h3>
+                <a href="https://drive.google.com/drive/folders/1OeumCG0QdIA5YAlvRlElGUYnFuA3rt0H" class="download-button">Download</a>
+            </div>
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIqefIEW96a3QdAnp0rvA5ISynw_CoNeURIA&s">
+                <h3>Soft Skill</h3>
+                <a href="https://drive.google.com/drive/folders/1H69bPdfeh03HlpK60oUkh5LaryFDCPNV" class="download-button">Download</a>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <h2>2nd Year</h2>
+        <div class="box-container">
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXatjS4yGAdEiXrV-2MJSrohqm9st3_nJFeg&s">
+                <h3>COA</h3>
+                <a href="https://drive.google.com/drive/folders/1H69bPdfeh03HlpK60oUkh5LaryFDCPNV" class="download-button">Download</a>
+            </div>
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF3vxVNZVs3bonhPUQvb_htnzi6hF0HkBmQA&s">
+                <h3>Python</h3>
+                <a href="https://drive.google.com/drive/folders/1H69bPdfeh03HlpK60oUkh5LaryFDCPNV" class="download-button">Download</a>
+            </div>
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWJzBSvgDa4f7LayKwB00l61Or1wQR300xOw&s">
+                <h3>Java</h3>
+                <a href="https://drive.google.com/drive/folders/1H69bPdfeh03HlpK60oUkh5LaryFDCPNV" class="download-button">Download</a>
+            </div>
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOm5OUWo5MjAjraKW-mEnq-L_bdu24x0DxsUzwiBpy3ygpt0Ik1Fh7qHwfBLpHju8n2vo&usqp=CAU" alt="Cyber Security">
+                <h3>Cyber Security</h3>
+                <a href="https://drive.google.com/drive/folders/1H69bPdfeh03HlpK60oUkh5LaryFDCPNV" class="download-button">Download</a>
+            </div>
+            <div class="box">
+                <img src="https://vectorified.com/image/math-logo-vector-21.jpg" alt="Maths">
+                <h3>Maths</h3>
+                <a href="https://drive.google.com/drive/folders/1H69bPdfeh03HlpK60oUkh5LaryFDCPNV" class="download-button">Download</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

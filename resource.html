@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url('20689.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page-info {
+            text-align: center;
+            margin: 0 auto 30px;
+            max-width: 800px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .resource-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .resource-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            border: 2px solid transparent;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .resource-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 1);
+            border: 2px solid #3498db;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .resource-box h3 {
+            color: #0a0b0c;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .resource-box a {
+            color: #3498db;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .resource-box a:hover {
+            color: #2980b9;
+        }
+
+        .resource-box p {
+            color: #2f2e2e;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .resource-box i {
+            font-size: 40px;
+            color: #3498db;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .resource-box:hover i {
+            transform: rotate(360deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .page-info {
+                font-size: 1rem;
+                padding: 15px;
+            }
+
+            .resource-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .resource-box {
+                padding: 15px;
+            }
+
+            .resource-box h3 {
+                font-size: 1.2rem;
+            }
+
+            .resource-box i {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-info {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+
+            .resource-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Resource Page</h1>
+    <div class="page-info">
+        Welcome to the College Notes page! Here, you can find and download notes for various subjects from your college curriculum. 
+        The notes are organized by year and subject for easy access. Simply click on the subject you're interested in and download 
+        the notes to help you with your studies. Happy learning!
+    </div>
+    <div class="resource-container">
+        <div class="resource-box" onclick="window.location.href='college_notes.html';">
+            <i class="fas fa-book"></i>
+            <a href="collegenote.html"><h3>College Notes</h3></a>
+            <p>Access notes for all subjects and years.</p>
+        </div>
+        <div class="resource-box" onclick="window.location.href='gateway_one_shot.html';">
+            <i class="fas fa-bolt"></i>
+            <a href="previousyear.html"><h3>Gateway One Shot</h3></a>
+            <p>Quick revision materials for GATE.</p>
+        </div>
+        <div class="resource-box" onclick="window.location.href='question_paper.html';">
+            <i class="fas fa-file-alt"></i>
+            <a href="prequestion.html"><h3>Question Paper</h3></a>
+            <p>Previous year and sample papers.</p>
+        </div>
+        <div class="resource-box" onclick="window.location.href='practical_file.html';">
+            <i class="fas fa-folder-open"></i>
+            <a href="https://drive.google.com/file/d/1VpNcVGG0oZUEYgidouiwhuRQsuM-Ln_a/view"><h3>Practical File</h3></a>
+            <p>Practical files for all subjects.</p>
+        </div>
+        <div class="resource-box" onclick="window.location.href='quantum_pdf.html';">
+            <i class="fas fa-file-pdf"></i>
+            <h3>Quantum PDF</h3>
+            <p>Concise notes for quick revision.</p>
+        </div>
+        <div class="resource-box" onclick="window.location.href='dsa_practice_sheet.html';">
+            <i class="fas fa-laptop-code"></i>
+            <a href="https://www.tle-eliminators.com/cp-sheet"><h3>DSA Practice Sheet</h3></a>
+            <p>Practice sheets for Data Structures and Algorithms.</p>
+        </div>
+        <div class="resource-box" onclick="window.location.href='gate_sources.html';">
+            <i class="fas fa-graduation-cap"></i>
+            <a href="gatepage.html"><h3>GATE Sources</h3></a>
+            <p>Resources for GATE preparation.</p>
+        </div>
+    </div>
+</body>
+</html>
